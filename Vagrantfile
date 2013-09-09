@@ -51,12 +51,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #   # Use VBoxManage to customize the VM. For example to change memory:
   #   vb.customize ["modifyvm", :id, "--memory", "1024"]
   # end
-  #
-  # View the documentation for the provider you're using for more
-  # information on available options.
 
   # adding support for berkshelf
   config.berkshelf.enabled = true
+
+  # force update of chef
+  config.vm.provision :shell, :inline => "curl -L https://www.opscode.com/chef/install.sh | bash"
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
@@ -78,11 +78,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #
   # The Opscode Platform uses HTTPS. Substitute your organization for
   # ORGNAME in the URL and validation key.
-  #
-  # If you have your own Chef Server, use the appropriate URL, which may be
-  # HTTP instead of HTTPS depending on your configuration. Also change the
-  # validation key to validation.pem.
-
   config.vm.provision :chef_client do |chef|
     chef.chef_server_url = "https://api.opscode.com/organizations/soupstraw"
     chef.validation_key_path = "./.chef/soupstraw-validator.pem"
@@ -90,5 +85,4 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.node_name = "app0"
     chef.add_role "base"
   end
-
 end
