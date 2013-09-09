@@ -2,6 +2,9 @@
   "sources": {
     "users": {
       "locked_version": "1.5.2"
+    },
+    "sudo": {
+      "locked_version": "2.2.0"
     }
   }
 }

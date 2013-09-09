@@ -2,11 +2,22 @@
   "name": "base",
   "description": "Every node gets this role.",
   "json_class": "Chef::Role",
-  "default_attributes": {},
+  "default_attributes": {
+    "authorization": {
+      "sudo": {
+        "groups": [
+          "admin",
+          "wheel",
+          "sysadmin"
+        ]
+      }
+    }
+  },
   "override_attributes": {},
   "chef_type": "role",
   "run_list": [
-    "recipe[users::sysadmins]"
+    "recipe[users::sysadmins]",
+    "recipe[sudo]"
   ],
   "env_run_lists": {}
 }
