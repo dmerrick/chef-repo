@@ -84,5 +84,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.validation_client_name = "soupstraw-validator"
     chef.node_name = "app0"
     chef.add_role "base"
+    chef.add_role "ubuntu"
   end
 end
