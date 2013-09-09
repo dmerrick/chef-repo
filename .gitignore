@@ -1,3 +1,5 @@
 .chef
+.vagrant
 data_bags/encrypted_data_bag_secret
+*.un~
 
