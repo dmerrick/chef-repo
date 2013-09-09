@@ -1,20 +1,26 @@
 {
   "id": "dmerrick",
   "ssh_keys": {
-    "encrypted_data": "/ntxkA+sY/Cily1+xioPuwPiV6lhQZY0tR9xvNKN0/sT+Yn9b1xPzoKxKXoA\nyUyBD9O1nPTl0JJyjdq2aSNc2zJa37jTXiOsAdd4F663gZo3fe+Q6Lro8VYS\n0m0X2mBxMAj7PKxHFvJKVh+BODBZwcvMCsWEZkeOkoL5RzBYQRBitknb/Ted\nrGlCJSqmYJjf1Pmn/vaAZVQn64jNxF44uNHLCGt0R9uhhDuZAIGrsBi2CDhY\nBU1xLaaWPtXal309M1+z3aNrmnnNgmOWLnJCXvSX0PU4R5PU6AeUaNKA+Z6Q\nyiog2QWUo+GotcCYt6O2VA/nTm6TIQXSaaGzXHV7pgRhQyrO1x/oPej/aaLk\ne+Sm4v0NUJlYZUtwc5CR1aDwgeqduZIzCA1BVQHRd1AblOZUG6e9mDnYeCzh\n3GD4SyrnbhykoYJZPdYesTugGvA2JZQwSWzk3TZp/X0svd8QIGGuzfTAuNf0\n5u19Vs/CfW5fF1tp6VZjCBeVPuTnNtViHu+rVSYSCY/D13RCzTFAs/2o1U0K\nIrGifSwxw1cEKSSxSMgSkrRy5P4h5foO1vwxDLzWpMY3xS0H/RRZPMqTXw==\n",
-    "iv": "CiEOnLs9WcN/Kuz4il9qgg==\n",
+    "encrypted_data": "CHqH2OavDzyGs+9itW5s+FN+VwMbbarL0+nrhJs2Gm7WkdstDsD6EywRc29o\nUAR5URpVOwv7XVC4FxxMja/gYBEz/wEhy5QxdZaFYbIQxG1xZuqYGt7JVEe4\nTrzjGQLxim5ozhmi+7QB8FrFWdbfCdJIGmPryozU+oeuoBkVpkeCisiP52XD\ngPf+Aiq91jk3MVKt+de/91GgzCnFltfbzx2WIaTJQkBnj5FTXXvbSwoahKAW\nngPYRIO+OYWXFCza8/1dNBvkxCfmWbf4F96s1nr4laXBoCkVR5h6Mcji5Qr7\nnObctHL55VDaXosvkVE5Br4MbVZssTm3TiV5S9QX4NpWmrISxdYbxYMqMfLs\nTHB+PMVLJGP9Bg91Ord0zLyjZH/qQlyzXQbDklV8N3Ur58UKZmHQJDG/CI92\n2qi6RLGZMyxdEzLDLIJavmH1EeBp9+FPalG66jaTHCxO2x9lLaA1jQJoNThQ\nSKnFs9VtLB7BEZJWdGj+qlaZrJHqu2bYkUVWeLxVMTu4YQgECwCfRAGGt6YW\nvxCz1QYEpR6zs27lfA7Mt/MVN/+KJ5rBIDyfKE3c3+zUTr4H4fByG355aQ==\n",
+    "iv": "Iot08rCQ4zajizio4gwtHg==\n",
     "version": 1,
     "cipher": "aes-256-cbc"
   },
   "groups": {
-    "encrypted_data": "zxPaEHFICt/8WvXxmlAiE0T/9ChZoiOnjkCFxkKYwUY=\n",
-    "iv": "q0fbJuh7L7iszGUzvkGyhw==\n",
+    "encrypted_data": "1L64syKy3JBo01KcGHtdlC7NRiDEHA0c0GzBCQm/2so=\n",
+    "iv": "AoNsWD/fyZIFtc72wGQ8FA==\n",
     "version": 1,
     "cipher": "aes-256-cbc"
   },
   "shell": {
-    "encrypted_data": "wVcNcL+BsC3VHWl0AEA2xShsSuEAi6pLLjRFtj2QFnM=\n",
-    "iv": "EeU+aFAwS7A7c61fhhucDw==\n",
+    "encrypted_data": "5/XOU3r+FrRe2Lnk4gOrnK2k9yfNgcDGERZOb7RCq3Y=\n",
+    "iv": "as7+iEQm/f34MBDor2x3wA==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "password": {
+    "encrypted_data": "2xnnA2Do9wDrLKYCTXcqMoHs7rn+BhxdJk6BgMxIFtnW800Stde3YNPUXIcI\nuw94ccyXsCdAfqaLHTj5IgNqVA==\n",
+    "iv": "xl2ZeQle89DO/m1icLu8NA==\n",
     "version": 1,
     "cipher": "aes-256-cbc"
   }
