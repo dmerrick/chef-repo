@@ -1,0 +1,16 @@
+{
+  "name": "vagrant",
+  "description": "Every vagrant node gets this role.",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "authorization": {
+      "sudo": {
+        "users": ["vagrant"]
+      }
+    }
+  },
+  "override_attributes": {},
+  "chef_type": "role",
+  "run_list": [],
+  "env_run_lists": {}
+}

@@ -56,7 +56,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.berkshelf.enabled = true
 
   # force update of chef
-  config.vm.provision :shell, :inline => "curl -L https://www.opscode.com/chef/install.sh | bash"
+  #config.vm.provision :shell, :inline => "curl -L https://www.opscode.com/chef/install.sh | bash"
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
@@ -83,6 +83,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.validation_key_path = "./.chef/soupstraw-validator.pem"
     chef.validation_client_name = "soupstraw-validator"
     chef.node_name = "app0"
+    chef.add_role "vagrant"
     chef.add_role "base"
     chef.add_role "ubuntu"
   end
