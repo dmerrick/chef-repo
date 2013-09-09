@@ -10,7 +10,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # please see the online documentation at vagrantup.com.
 
   # Every Vagrant virtual environment requires a box to build off of.
-  config.vm.box = "app0"
+  config.vm.box = "vagrant-ubuntu-raring-64"
 
   # The url from where the 'config.vm.box' box will be fetched if it
   # doesn't already exist on the user's system.
@@ -87,6 +87,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.chef_server_url = "https://api.opscode.com/organizations/soupstraw"
     chef.validation_key_path = "./.chef/soupstraw-validator.pem"
     chef.validation_client_name = "soupstraw-validator"
+    chef.node_name = "app0"
     chef.add_role "base"
   end
 
