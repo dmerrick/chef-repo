@@ -1,0 +1,21 @@
+{
+  "id": "dmerrick",
+  "ssh_keys": {
+    "encrypted_data": "/ntxkA+sY/Cily1+xioPuwPiV6lhQZY0tR9xvNKN0/sT+Yn9b1xPzoKxKXoA\nyUyBD9O1nPTl0JJyjdq2aSNc2zJa37jTXiOsAdd4F663gZo3fe+Q6Lro8VYS\n0m0X2mBxMAj7PKxHFvJKVh+BODBZwcvMCsWEZkeOkoL5RzBYQRBitknb/Ted\nrGlCJSqmYJjf1Pmn/vaAZVQn64jNxF44uNHLCGt0R9uhhDuZAIGrsBi2CDhY\nBU1xLaaWPtXal309M1+z3aNrmnnNgmOWLnJCXvSX0PU4R5PU6AeUaNKA+Z6Q\nyiog2QWUo+GotcCYt6O2VA/nTm6TIQXSaaGzXHV7pgRhQyrO1x/oPej/aaLk\ne+Sm4v0NUJlYZUtwc5CR1aDwgeqduZIzCA1BVQHRd1AblOZUG6e9mDnYeCzh\n3GD4SyrnbhykoYJZPdYesTugGvA2JZQwSWzk3TZp/X0svd8QIGGuzfTAuNf0\n5u19Vs/CfW5fF1tp6VZjCBeVPuTnNtViHu+rVSYSCY/D13RCzTFAs/2o1U0K\nIrGifSwxw1cEKSSxSMgSkrRy5P4h5foO1vwxDLzWpMY3xS0H/RRZPMqTXw==\n",
+    "iv": "CiEOnLs9WcN/Kuz4il9qgg==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "groups": {
+    "encrypted_data": "zxPaEHFICt/8WvXxmlAiE0T/9ChZoiOnjkCFxkKYwUY=\n",
+    "iv": "q0fbJuh7L7iszGUzvkGyhw==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  },
+  "shell": {
+    "encrypted_data": "wVcNcL+BsC3VHWl0AEA2xShsSuEAi6pLLjRFtj2QFnM=\n",
+    "iv": "EeU+aFAwS7A7c61fhhucDw==\n",
+    "version": 1,
+    "cipher": "aes-256-cbc"
+  }
+}
