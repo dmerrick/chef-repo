@@ -1,4 +1,4 @@
 site :opscode
 
-cookbook 'unicorn'
+cookbook 'users'
 
