@@ -17,7 +17,8 @@
   "chef_type": "role",
   "run_list": [
     "recipe[users::sysadmins]",
-    "recipe[sudo]"
+    "recipe[sudo]",
+    "recipe[vim]"
   ],
   "env_run_lists": {}
 }

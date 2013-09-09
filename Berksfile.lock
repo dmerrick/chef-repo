@@ -8,6 +8,9 @@
     },
     "sudo": {
       "locked_version": "2.2.0"
+    },
+    "vim": {
+      "locked_version": "1.0.2"
     }
   }
 }
