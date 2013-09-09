@@ -1,0 +1,7 @@
+{
+  "sources": {
+    "unicorn": {
+      "locked_version": "1.3.0"
+    }
+  }
+}
