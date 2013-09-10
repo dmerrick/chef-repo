@@ -7,3 +7,7 @@ cookbook 'sudo'
 cookbook 'users'
 cookbook 'vim'
 
+# only for chef-solo
+group :solo do
+  cookbook 'chef-solo-search'
+end

@@ -1,0 +1,12 @@
+{
+  "name": "chef-solo",
+  "description": "Every chef-solo node gets this role.",
+  "json_class": "Chef::Role",
+  "default_attributes": {},
+  "override_attributes": {},
+  "chef_type": "role",
+  "run_list": [
+    "recipe[chef-solo-search]"
+  ],
+  "env_run_lists": {}
+}
