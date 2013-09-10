@@ -64,22 +64,25 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # remove node and client when the vagrant box is destroyed
   # first: vagrant plugin install vagrant-butcher
   # NOTE: this will be outdated soon: https://github.com/cassianoleal/vagrant-butcher/issues/9
-  config.butcher.knife_config_file = './.chef/knife.rb'
+  #config.butcher.knife_config_file = './.chef/knife.rb'
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
   # some recipes and/or roles.
   #
-  # config.vm.provision :chef_solo do |chef|
-  #   chef.cookbooks_path = "../my-recipes/cookbooks"
-  #   chef.roles_path = "../my-recipes/roles"
-  #   chef.data_bags_path = "../my-recipes/data_bags"
-  #   chef.add_recipe "mysql"
-  #   chef.add_role "web"
+  #config.vm.provision :chef_solo do |chef|
+  #  chef.roles_path = "./roles"
+  #  chef.data_bags_path = "./data_bags"
+  #  #chef.node_name = "app0"
+  #  chef.add_role "vagrant"
+  #  chef.add_role "base"
+  #  chef.add_role "ubuntu"
   #
-  #   # You may also specify custom JSON attributes:
-  #   chef.json = { :mysql_password => "foo" }
-  # end
+  #  # set by the berkshelf plugin:
+  #  #chef.cookbooks_path = "./cookbooks"
+  #  # You may also specify custom JSON attributes:
+  #  #chef.json = { :mysql_password => "foo" }
+  #end
 
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
