@@ -53,10 +53,18 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # end
 
   # adding support for berkshelf
+  # first: vagrant plugin install vagrant-berkshelf
   config.berkshelf.enabled = true
 
   # force update of chef
-  config.vm.provision :shell, :inline => "curl -L https://www.opscode.com/chef/install.sh | bash"
+  # first: vagrant plugin install vagrant-omnibus
+  config.omnibus.chef_version = :latest
+  #config.vm.provision :shell, :inline => "curl -L https://www.opscode.com/chef/install.sh | bash"
+
+  # remove node and client when the vagrant box is destroyed
+  # first: vagrant plugin install vagrant-butcher
+  # NOTE: this will be outdated soon: https://github.com/cassianoleal/vagrant-butcher/issues/9
+  config.butcher.knife_config_file = './.chef/knife.rb'
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding
