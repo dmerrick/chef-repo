@@ -7,6 +7,7 @@ cookbook 'sudo'
 cookbook 'users'
 cookbook 'vim'
 cookbook 'mosh'
+cookbook 'tmux'
 
 # only for chef-solo
 group :solo do

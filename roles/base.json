@@ -21,7 +21,8 @@
     "recipe[build-essential]",
     "recipe[git]",
     "recipe[vim]",
-    "recipe[mosh]"
+    "recipe[mosh]",
+    "recipe[tmux]"
   ],
   "env_run_lists": {}
 }
