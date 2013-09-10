@@ -74,6 +74,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #  chef.roles_path = "./roles"
   #  chef.data_bags_path = "./data_bags"
   #  #chef.node_name = "app0"
+  #  chef.add_role "chef-solo"
   #  chef.add_role "vagrant"
   #  chef.add_role "base"
   #  chef.add_role "ubuntu"

@@ -4,4 +4,3 @@ clutter
 data_bags/encrypted_data_bag_secret
 data_bags/users
 *.un~
-
