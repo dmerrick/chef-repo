@@ -20,7 +20,8 @@
     "recipe[sudo]",
     "recipe[build-essential]",
     "recipe[git]",
-    "recipe[vim]"
+    "recipe[vim]",
+    "recipe[mosh]"
   ],
   "env_run_lists": {}
 }

@@ -6,6 +6,7 @@ cookbook 'git'
 cookbook 'sudo'
 cookbook 'users'
 cookbook 'vim'
+cookbook 'mosh'
 
 # only for chef-solo
 group :solo do
