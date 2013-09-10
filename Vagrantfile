@@ -56,7 +56,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.berkshelf.enabled = true
 
   # force update of chef
-  #config.vm.provision :shell, :inline => "curl -L https://www.opscode.com/chef/install.sh | bash"
+  config.vm.provision :shell, :inline => "curl -L https://www.opscode.com/chef/install.sh | bash"
 
   # Enable provisioning with chef solo, specifying a cookbooks path, roles
   # path, and data_bags path (all relative to this Vagrantfile), and adding

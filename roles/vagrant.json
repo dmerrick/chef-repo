@@ -5,7 +5,8 @@
   "default_attributes": {
     "authorization": {
       "sudo": {
-        "users": ["vagrant"]
+        "users": ["vagrant"],
+        "passwordless": "true"
       }
     }
   },

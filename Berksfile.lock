@@ -9,11 +9,11 @@
     "git": {
       "locked_version": "2.6.0"
     },
-    "users": {
-      "locked_version": "1.5.2"
-    },
     "sudo": {
       "locked_version": "2.2.0"
+    },
+    "users": {
+      "locked_version": "1.5.2"
     },
     "vim": {
       "locked_version": "1.0.2"
