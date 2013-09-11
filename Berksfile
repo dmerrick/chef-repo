@@ -10,6 +10,7 @@ cookbook 'mosh'
 cookbook 'tmux'
 cookbook 'soupstraw', path: './cookbooks/soupstraw'
 cookbook 'hostname'
+cookbook 'chef-client'
 
 # only for chef-solo
 group :solo do
