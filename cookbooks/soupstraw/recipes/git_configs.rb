@@ -37,3 +37,18 @@
   end
 
 end
+
+
+# dana uses a custom bash prompt
+directory "/home/dmerrick/other_projects"
+
+git "/home/dmerrick/other_projects/git-prompt" do
+  repository "https://github.com/dmerrick/git-prompt.git"
+  reference "master"
+end
+
+directory "/home/dmerrick/other_projects/git-prompt" do
+  owner "dmerrick"
+  group "dmerrick"
+  recursive true
+end
