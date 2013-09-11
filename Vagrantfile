@@ -43,14 +43,13 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
   # Example for VirtualBox:
+  #config.vm.provider :virtualbox do |vb|
+  #  # Don't boot with headless mode
+  #  vb.gui = true
   #
-  # config.vm.provider :virtualbox do |vb|
-  #   # Don't boot with headless mode
-  #   vb.gui = true
-  #
-  #   # Use VBoxManage to customize the VM. For example to change memory:
-  #   vb.customize ["modifyvm", :id, "--memory", "1024"]
-  # end
+  #  # Use VBoxManage to customize the VM. For example to change memory:
+  #  #vb.customize ["modifyvm", :id, "--memory", "1024"]
+  #end
 
   # adding support for berkshelf
   # first: vagrant plugin install vagrant-berkshelf
