@@ -28,7 +28,9 @@
       "path": "./cookbooks/soupstraw"
     },
     "chef-solo-search": {
-      "locked_version": "0.4.0"
+      "locked_version": "0.4.0",
+      "git": "git://github.com/edelight/chef-solo-search.git",
+      "ref": "a28e7f25ab4afb53f9a55dd49d8b1277d0374c29"
     },
     "dmg": {
       "locked_version": "2.0.0"

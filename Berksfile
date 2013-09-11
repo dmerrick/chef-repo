@@ -12,5 +12,6 @@ cookbook 'soupstraw', path: './cookbooks/soupstraw'
 
 # only for chef-solo
 group :solo do
-  cookbook 'chef-solo-search'
+  # the opscode version is bugged
+  cookbook 'chef-solo-search', github: 'edelight/chef-solo-search', ref: 'master'
 end

@@ -69,33 +69,33 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # path, and data_bags path (all relative to this Vagrantfile), and adding
   # some recipes and/or roles.
   #
-  #config.vm.provision :chef_solo do |chef|
-  #  chef.roles_path = "./roles"
-  #  chef.data_bags_path = "./data_bags"
-  #  #chef.node_name = "app0"
-  #  chef.add_role "chef-solo"
-  #  chef.add_role "vagrant"
-  #  chef.add_role "base"
-  #  chef.add_role "ubuntu"
-  #
-  #  # set by the berkshelf plugin:
-  #  #chef.cookbooks_path = "./cookbooks"
-  #  # You may also specify custom JSON attributes:
-  #  #chef.json = { :mysql_password => "foo" }
-  #end
+  config.vm.provision :chef_solo do |chef|
+    chef.roles_path = "./roles"
+    chef.data_bags_path = "./data_bags"
+    chef.node_name = "app0"
+    chef.add_role "chef-solo"
+    chef.add_role "vagrant"
+    chef.add_role "ubuntu"
+    chef.add_role "base"
+
+    # set by the berkshelf plugin:
+    #chef.cookbooks_path = "./cookbooks"
+    # You may also specify custom JSON attributes:
+    #chef.json = { :mysql_password => "foo" }
+  end
 
   # Enable provisioning with chef server, specifying the chef server URL,
   # and the path to the validation key (relative to this Vagrantfile).
   #
   # The Opscode Platform uses HTTPS. Substitute your organization for
   # ORGNAME in the URL and validation key.
-  config.vm.provision :chef_client do |chef|
-    chef.chef_server_url = "https://api.opscode.com/organizations/soupstraw"
-    chef.validation_key_path = "./.chef/soupstraw-validator.pem"
-    chef.validation_client_name = "soupstraw-validator"
-    chef.node_name = "app0"
-    chef.add_role "vagrant"
-    chef.add_role "base"
-    chef.add_role "ubuntu"
-  end
+  #config.vm.provision :chef_client do |chef|
+  #  chef.chef_server_url = "https://api.opscode.com/organizations/soupstraw"
+  #  chef.validation_key_path = "./.chef/soupstraw-validator.pem"
+  #  chef.validation_client_name = "soupstraw-validator"
+  #  chef.node_name = "app0"
+  #  chef.add_role "vagrant"
+  #  chef.add_role "ubuntu"
+  #  chef.add_role "base"
+  #end
 end
