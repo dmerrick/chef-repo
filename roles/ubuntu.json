@@ -6,7 +6,8 @@
   "override_attributes": {},
   "chef_type": "role",
   "run_list": [
-    "recipe[apt]"
+    "recipe[apt]",
+    "recipe[hostname]"
   ],
   "env_run_lists": {}
 }

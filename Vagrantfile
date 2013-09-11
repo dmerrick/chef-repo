@@ -77,11 +77,12 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     chef.add_role "vagrant"
     chef.add_role "ubuntu"
     chef.add_role "base"
+    chef.json = {
+      :set_fqdn => "*.soupstraw.com"
+    }
 
     # set by the berkshelf plugin:
     #chef.cookbooks_path = "./cookbooks"
-    # You may also specify custom JSON attributes:
-    #chef.json = { :mysql_password => "foo" }
   end
 
   # Enable provisioning with chef server, specifying the chef server URL,

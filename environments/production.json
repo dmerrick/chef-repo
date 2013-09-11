@@ -1,0 +1,11 @@
+{
+  "name": "production",
+  "description": "Soupstraw production servers",
+  "cookbook_versions": {},
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "default_attributes": {
+    "set_fqdn": "*.soupstraw.com"
+  },
+  "override_attributes": {}
+}

@@ -27,6 +27,9 @@
     "soupstraw": {
       "path": "./cookbooks/soupstraw"
     },
+    "hostname": {
+      "locked_version": "0.1.0"
+    },
     "chef-solo-search": {
       "locked_version": "0.4.0",
       "git": "git://github.com/edelight/chef-solo-search.git",
@@ -46,6 +49,9 @@
     },
     "runit": {
       "locked_version": "1.2.0"
+    },
+    "hostsfile": {
+      "locked_version": "2.0.0"
     }
   }
 }
