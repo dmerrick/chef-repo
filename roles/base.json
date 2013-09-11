@@ -22,7 +22,8 @@
     "recipe[git]",
     "recipe[vim]",
     "recipe[mosh]",
-    "recipe[tmux]"
+    "recipe[tmux]",
+    "recipe[soupstraw::git_configs]"
   ],
   "env_run_lists": {}
 }

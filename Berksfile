@@ -8,6 +8,7 @@ cookbook 'users'
 cookbook 'vim'
 cookbook 'mosh'
 cookbook 'tmux'
+cookbook 'soupstraw', path: './cookbooks/soupstraw'
 
 # only for chef-solo
 group :solo do

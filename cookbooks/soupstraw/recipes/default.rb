@@ -1,8 +1,7 @@
 #
-# Cookbook Name:: cookbooks/soupstraw
+# Cookbook Name:: soupstraw
 # Recipe:: default
 #
-# Copyright (C) 2013 YOUR_NAME
+# Copyright (C) 2013 Soupstraw, Inc.
 # 
-# All rights reserved - Do Not Redistribute
-#
+

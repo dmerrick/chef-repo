@@ -24,6 +24,9 @@
     "tmux": {
       "locked_version": "1.3.2"
     },
+    "soupstraw": {
+      "path": "./cookbooks/soupstraw"
+    },
     "chef-solo-search": {
       "locked_version": "0.4.0"
     },
