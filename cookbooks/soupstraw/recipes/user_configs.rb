@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: soupstraw
-# Recipe:: git_configs
+# Recipe:: user_configs
 #
 # Copyright (C) 2013 Soupstraw, Inc.
 #
