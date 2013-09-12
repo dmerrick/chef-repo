@@ -5,7 +5,15 @@
 # Copyright (C) 2013 Soupstraw, Inc.
 #
 
-%w{ 10-help-text 50-landscape-sysinfo 51-cloudguest }.each do |motd_section|
+# delete these default motd scripts
+default_ubuntu_sections = %w{
+  00-header
+  10-help-text
+  50-landscape-sysinfo
+  51-cloudguest
+}
+
+default_ubuntu_sections.each do |motd_section|
   motd motd_section do
     action :delete
   end
