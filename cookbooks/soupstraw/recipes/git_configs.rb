@@ -3,7 +3,7 @@
 # Recipe:: git_configs
 #
 # Copyright (C) 2013 Soupstraw, Inc.
-# 
+#
 
 %w{ dmerrick mcclurem }.each do |username|
 
@@ -51,4 +51,15 @@ directory "/home/dmerrick/other_projects/git-prompt" do
   owner "dmerrick"
   group "dmerrick"
   recursive true
+end
+
+# add pathogen too
+directory "/home/dmerrick/.vim/autoload" do
+  recursive true
+end
+
+remote_file "/home/dmerrick/.vim/autoload/pathogen.vim" do
+  source "https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim"
+  mode 00755
+  action :create_if_missing
 end
