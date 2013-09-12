@@ -11,6 +11,12 @@
           "sysadmin"
         ]
       }
+    },
+    "git": {
+      "_comment": "This is a fix for CHEF-3940",
+      "url": "https://git-core.googlecode.com/files/git-1.8.3.2.tar.gz",
+      "checksum": "4a6585dd81a542e7803e5f54a5c85b1c1a5869aa",
+      "version": "1.8.3.2"
     }
   },
   "override_attributes": {},
@@ -19,7 +25,7 @@
     "recipe[users::sysadmins]",
     "recipe[sudo]",
     "recipe[build-essential]",
-    "recipe[git]",
+    "recipe[git::source]",
     "recipe[vim]",
     "recipe[mosh]",
     "recipe[tmux]",
