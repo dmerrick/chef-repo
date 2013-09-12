@@ -70,13 +70,19 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # some recipes and/or roles.
   #
   config.vm.provision :chef_solo do |chef|
+
     chef.roles_path = "./roles"
     chef.data_bags_path = "./data_bags"
+    chef.environments_path = "./environments"
+
     chef.node_name = "app0"
+    chef.environment = "development"
+
     chef.add_role "chef-solo"
     chef.add_role "vagrant"
     chef.add_role "ubuntu"
     chef.add_role "base"
+
     chef.json = {
       :set_fqdn => "*.soupstraw.com"
     }
@@ -94,6 +100,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   #  chef.chef_server_url = "https://api.opscode.com/organizations/soupstraw"
   #  chef.validation_key_path = "./.chef/soupstraw-validator.pem"
   #  chef.validation_client_name = "soupstraw-validator"
+  #  #chef.environment = "development" # test me
   #  chef.node_name = "app0"
   #  chef.add_role "vagrant"
   #  chef.add_role "ubuntu"
