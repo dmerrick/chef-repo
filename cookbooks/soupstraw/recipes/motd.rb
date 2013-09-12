@@ -13,5 +13,10 @@ end
 
 motd '52-soupstraw-ascii' do
   cookbook 'soupstraw'
-  source '52-soupstraw-ascii.sh.erb'
+  source "#{name}.sh.erb"
+end
+
+motd '53-chef-info' do
+  cookbook 'soupstraw'
+  source "#{name}.sh.erb"
 end
