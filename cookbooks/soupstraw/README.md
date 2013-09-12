@@ -1,4 +1,4 @@
-# cookbooks/soupstraw cookbook
+# soupstraw cookbook
 
 # Requirements
 
@@ -10,4 +10,4 @@
 
 # Author
 
-Author:: YOUR_NAME (<YOUR_EMAIL>)
+Author:: Dana Merrick (someone@soupstraw.com)
