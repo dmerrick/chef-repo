@@ -14,6 +14,7 @@
   end
 
   # give the user ownership of everything
+  # FIXME: this doesnt work like you think it does
   directory "/home/#{username}/configs" do
     owner username
     group username

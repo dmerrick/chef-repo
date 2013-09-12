@@ -1,0 +1,20 @@
+{
+  "name": "web_server",
+  "description": "Web servers get this role.",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "soupstraw": {
+      "repository": "git://github.com/dmerrick/soupstraw.git",
+      "branch": "production",
+      "deploy_dir": "/data/soupstraw",
+      "docroot": "/data/soupstraw/current",
+      "server_name": "app1.soupstraw.com"
+    }
+  },
+  "override_attributes": {},
+  "chef_type": "role",
+  "run_list": [
+    "recipe[soupstraw::application]"
+  ],
+  "env_run_lists": {}
+}

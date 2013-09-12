@@ -36,6 +36,9 @@
     "motd": {
       "locked_version": "0.3.1"
     },
+    "rbenv": {
+      "locked_version": "1.6.5"
+    },
     "chef-solo-search": {
       "locked_version": "0.4.0",
       "git": "git://github.com/edelight/chef-solo-search.git",
@@ -56,11 +59,26 @@
     "runit": {
       "locked_version": "1.2.0"
     },
+    "apache2": {
+      "locked_version": "1.7.0"
+    },
+    "postgresql": {
+      "locked_version": "3.0.4"
+    },
+    "openssl": {
+      "locked_version": "1.1.0"
+    },
+    "unicorn-ng": {
+      "locked_version": "0.2.0"
+    },
     "hostsfile": {
       "locked_version": "2.0.0"
     },
     "cron": {
       "locked_version": "1.2.6"
+    },
+    "ohai": {
+      "locked_version": "1.1.12"
     }
   }
 }

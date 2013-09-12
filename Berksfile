@@ -12,6 +12,8 @@ cookbook 'soupstraw', path: './cookbooks/soupstraw'
 cookbook 'hostname'
 cookbook 'chef-client'
 cookbook 'motd'
+cookbook 'rbenv'
+
 
 # only for chef-solo
 group :solo do
