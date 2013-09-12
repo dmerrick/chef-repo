@@ -4,17 +4,19 @@
   "json_class": "Chef::Role",
   "default_attributes": {
     "soupstraw": {
+      "ruby_version": "2.0.0-p247",
       "repository": "git://github.com/dmerrick/soupstraw.git",
       "branch": "production",
       "deploy_dir": "/data/soupstraw",
-      "docroot": "/data/soupstraw/current",
-      "server_name": "app1.soupstraw.com"
+      "shared_dir": "/data/soupstraw/shared",
+      "docroot": "/data/soupstraw/current"
     }
   },
   "override_attributes": {},
   "chef_type": "role",
   "run_list": [
-    "recipe[soupstraw::application]"
+    "recipe[soupstraw::deploy]",
+    "recipe[soupstraw::unicorn]"
   ],
   "env_run_lists": {}
 }
