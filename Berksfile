@@ -11,6 +11,7 @@ cookbook 'tmux'
 cookbook 'soupstraw', path: './cookbooks/soupstraw'
 cookbook 'hostname'
 cookbook 'chef-client'
+cookbook 'motd'
 
 # only for chef-solo
 group :solo do
