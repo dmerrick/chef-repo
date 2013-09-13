@@ -29,7 +29,8 @@
     "recipe[vim]",
     "recipe[mosh]",
     "recipe[tmux]",
-    "recipe[soupstraw::user_configs]"
+    "recipe[soupstraw::user_configs]",
+    "recipe[soupstraw::dns]"
   ],
   "env_run_lists": {}
 }
