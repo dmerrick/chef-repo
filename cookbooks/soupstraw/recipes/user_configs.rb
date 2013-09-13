@@ -11,14 +11,8 @@
   git "/home/#{username}/configs" do
     repository "https://github.com/#{username}/configs.git"
     reference "master"
-  end
-
-  # give the user ownership of everything
-  # FIXME: this doesnt work like you think it does
-  directory "/home/#{username}/configs" do
-    owner username
+    user username
     group username
-    recursive true
   end
 
   # remove the existing config files (if they exist)
@@ -41,21 +35,22 @@ end
 
 
 # dana uses a custom bash prompt
-directory "/home/dmerrick/other_projects"
+directory "/home/dmerrick/other_projects" do
+  owner "dmerrick"
+  group "dmerrick"
+end
 
 git "/home/dmerrick/other_projects/git-prompt" do
   repository "https://github.com/dmerrick/git-prompt.git"
   reference "master"
-end
-
-directory "/home/dmerrick/other_projects/git-prompt" do
-  owner "dmerrick"
+  user "dmerrick"
   group "dmerrick"
-  recursive true
 end
 
 # add pathogen too
 directory "/home/dmerrick/.vim/autoload" do
+  owner "dmerrick"
+  group "dmerrick"
   recursive true
 end
 
@@ -63,4 +58,6 @@ remote_file "/home/dmerrick/.vim/autoload/pathogen.vim" do
   source "https://raw.github.com/tpope/vim-pathogen/master/autoload/pathogen.vim"
   mode 00755
   action :create_if_missing
+  owner "dmerrick"
+  group "dmerrick"
 end
