@@ -5,16 +5,17 @@
 # Copyright (C) 2013 Soupstraw, Inc.
 #
 
-deploy_user = node[:apache][:user]
+deploy_user = node[:soupstraw][:deploy_user]
 
 unicorn_ng_config "#{node[:soupstraw][:shared_dir]}/config/unicorn.rb" do
   worker_processes 16 if node.chef_environment == 'production'
   worker_processes  2 if node.chef_environment == 'development'
 
+  working_directory node[:soupstraw][:docroot]
+
   user  deploy_user
   owner deploy_user
   group deploy_user
-  working_directory node[:soupstraw][:docroot]
 
   if node.chef_environment == 'production'
     # listen on UNIX domain socket only

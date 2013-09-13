@@ -12,7 +12,7 @@
   "override_attributes": {},
   "chef_type": "role",
   "run_list": [
-    "recipe[postgresql::server]"
+    "recipe[soupstraw::database]"
   ],
   "env_run_lists": {}
 }

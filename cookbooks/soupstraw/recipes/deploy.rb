@@ -6,15 +6,12 @@
 #
 
 include_recipe 'soupstraw::ruby'
-#include_recipe 'apache2'
-include_recipe 'git'
-
+include_recipe 'git' #FIXME: is this necessary?
 
 app_name = node[:soupstraw][:server_name]
-deploy_user = node[:apache][:user]
+deploy_user = node[:soupstraw][:deploy_user]
 
-
-# create directory if required
+# create /data directory if required
 directory node[:soupstraw][:deploy_dir] do
   owner deploy_user
   group deploy_user
@@ -22,31 +19,24 @@ directory node[:soupstraw][:deploy_dir] do
   recursive true
 end
 
-# create vhost
-#web_app app_name do
-#  server_name app_name
-#  docroot node[:soupstraw][:docroot]
-#  template "sinatra_app.conf.erb"
-#  log_dir node[:apache][:log_dir]
-#end
-
-# Use the magical deploy_resource module in chef
+# pull down new code from git
 deploy_revision node[:soupstraw][:deploy_dir] do
   repo node[:soupstraw][:repository]
   revision node[:soupstraw][:branch]
   user deploy_user
   group deploy_user
 
+  # this stuff is pretty rails-specific, so disable it
   symlink_before_migrate.clear
   create_dirs_before_symlink.clear
   purge_before_symlink.clear
   symlinks.clear
 
   action :deploy
-  #notifies :restart, "service[apache2]"
   notifies :restart, "service[unicorn]"
 end
 
+# create the following directories:
 [
   "#{node[:soupstraw][:shared_dir]}/config",
   "#{node[:soupstraw][:shared_dir]}/log",
@@ -69,8 +59,9 @@ end
 
 # create database.yml
 #FIXME: most of this should be in attributes
-#FIXME: create soupstraw_ENV database
+#FIXME: figure out how to create soupstraw_ENV database
 #TODO: find postgres-y options to pass
+#TODO: use chef search to set the host value
 template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
   source 'database.yml.erb'
   owner deploy_user
@@ -82,7 +73,7 @@ template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
     :database    => 'postgres', # "soupstraw_#{node.chef_environment}",
     :username    => 'postgres',
     :password    => node[:postgresql][:password][:postgres],
-    :host        => 'localhost' # fixme
+    :host        => 'localhost'
   )
 end
 
@@ -93,7 +84,9 @@ link "#{node[:soupstraw][:docroot]}/config/database.yml" do
   group deploy_user
 end
 
+# install the necessary gems
 #TODO: make idempotent
+#TODO: try and see if we can avoid the rbenv_execute resource
 rbenv_execute "run bundle install" do
   command "/opt/rbenv/shims/bundle install --deployment --binstubs"
   cwd node[:soupstraw][:docroot]
@@ -101,16 +94,12 @@ rbenv_execute "run bundle install" do
   user deploy_user
 end
 
-#FIXME: is there a better place to call this?
+# run database migrations
 #TODO: make idempotent
+#TODO: try and see if we can avoid the rbenv_execute resource
 rbenv_execute "migrate the database" do
   command "/opt/rbenv/shims/bundle exec rake db:migrate"
   cwd node[:soupstraw][:docroot]
   ruby_version node[:soupstraw][:ruby_version]
   user deploy_user
 end
-
-#FIXME: hacky
-#bash "repair permissions on #{node[:soupstraw][:deploy_dir]}" do
-#  code "chown -R #{deploy_user}:#{deploy_user} #{node[:soupstraw][:deploy_dir]}"
-#end

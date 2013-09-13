@@ -5,6 +5,7 @@
   "default_attributes": {
     "soupstraw": {
       "ruby_version": "2.0.0-p247",
+      "deploy_user": "deploy",
       "repository": "git://github.com/dmerrick/soupstraw.git",
       "branch": "production",
       "deploy_dir": "/data/soupstraw",

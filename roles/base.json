@@ -22,7 +22,7 @@
   "override_attributes": {},
   "chef_type": "role",
   "run_list": [
-    "recipe[users::sysadmins]",
+    "recipe[soupstraw::create_users]",
     "recipe[sudo]",
     "recipe[build-essential]",
     "recipe[git::source]",
