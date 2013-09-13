@@ -1,6 +1,6 @@
 #
 # Cookbook Name:: soupstraw
-# Recipe:: dns
+# Recipe:: register_hostname
 #
 # Copyright (C) 2013 Soupstraw, Inc.
 #

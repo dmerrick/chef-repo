@@ -30,7 +30,7 @@
     "recipe[mosh]",
     "recipe[tmux]",
     "recipe[soupstraw::user_configs]",
-    "recipe[soupstraw::dns]"
+    "recipe[soupstraw::register_hostname]"
   ],
   "env_run_lists": {}
 }
