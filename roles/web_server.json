@@ -11,13 +11,17 @@
       "deploy_dir": "/data/soupstraw",
       "shared_dir": "/data/soupstraw/shared",
       "docroot": "/data/soupstraw/current"
+    },
+    "nginx": {
+      "default_site_enabled": false
     }
   },
   "override_attributes": {},
   "chef_type": "role",
   "run_list": [
     "recipe[soupstraw::deploy]",
-    "recipe[soupstraw::unicorn]"
+    "recipe[soupstraw::unicorn]",
+    "recipe[soupstraw::nginx]"
   ],
   "env_run_lists": {}
 }

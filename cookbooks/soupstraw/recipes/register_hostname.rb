@@ -8,9 +8,9 @@
 # pull in creds from the aws data bag
 aws = Chef::DataBagItem.load("aws", "main")
 
-include_recipe "route53"
-
 # workaround for an issue in the route53 cookbook
+package "libxml2-dev"
+package "libxslt1-dev"
 chef_gem "fog"
 
 route53_record "create a DNS record for #{node.name}" do

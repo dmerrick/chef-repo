@@ -1,0 +1,29 @@
+upstream unicorn {
+  server unix:<%= @docroot %>/tmp/sockets/unicorn.sock fail_timeout=0;
+}
+
+server {
+  listen 80;
+  server_name <%= @name %>.soupstraw.com;
+  root <%= @docroot %>/public;
+  # set far-future expiration headers on static content
+  expires max;
+
+  server_tokens off;
+
+  # set up the rails servers as a virtual location for use later
+  location @sinatra {
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP  $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_intercept_errors on;
+    proxy_redirect off;
+    proxy_pass http://unicorn;
+    expires off;
+  }
+
+  location / {
+    try_files $uri @sinatra;
+  }
+}

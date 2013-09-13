@@ -8,8 +8,8 @@
 deploy_user = node[:soupstraw][:deploy_user]
 
 unicorn_ng_config "#{node[:soupstraw][:shared_dir]}/config/unicorn.rb" do
-  worker_processes 16 if node.chef_environment == 'production'
-  worker_processes  2 if node.chef_environment == 'development'
+  worker_processes 3 if node.chef_environment == 'production'
+  worker_processes 1 if node.chef_environment == 'development'
 
   working_directory node[:soupstraw][:docroot]
 
@@ -17,12 +17,11 @@ unicorn_ng_config "#{node[:soupstraw][:shared_dir]}/config/unicorn.rb" do
   owner deploy_user
   group deploy_user
 
-  if node.chef_environment == 'production'
-    # listen on UNIX domain socket only
-    listen  'unix:tmp/sockets/unicorn.sock'
-    # shorter backlog for quicker failover when busy
-    backlog 1024
-  end
+  # listen on UNIX domain socket only
+  listen 'unix:tmp/sockets/unicorn.sock'
+
+  # shorter backlog for quicker failover when busy
+  backlog 1024 if node.chef_environment == 'production'
 
   # this is to fix a bug where verify_active_connections! did not exist
   #TODO: perhaps investigate adding it back later?
