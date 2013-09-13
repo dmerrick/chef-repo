@@ -41,7 +41,8 @@ end
   "#{node[:soupstraw][:shared_dir]}/config",
   "#{node[:soupstraw][:shared_dir]}/log",
   "#{node[:soupstraw][:docroot]}/vendor",
-  "#{node[:soupstraw][:docroot]}/tmp/pids"
+  "#{node[:soupstraw][:docroot]}/tmp/pids",
+  "#{node[:soupstraw][:docroot]}/tmp/sockets"
 ].each do |dir|
   directory dir do
     owner deploy_user
@@ -99,6 +100,7 @@ end
 #TODO: try and see if we can avoid the rbenv_execute resource
 rbenv_execute "migrate the database" do
   command "/opt/rbenv/shims/bundle exec rake db:migrate"
+  environment "RACK_ENV" => node.chef_environment
   cwd node[:soupstraw][:docroot]
   ruby_version node[:soupstraw][:ruby_version]
   user deploy_user
