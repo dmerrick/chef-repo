@@ -29,8 +29,7 @@
     "recipe[vim]",
     "recipe[mosh]",
     "recipe[tmux]",
-    "recipe[soupstraw::user_configs]",
-    "recipe[soupstraw::register_hostname]"
+    "recipe[soupstraw::user_configs]"
   ],
   "env_run_lists": {}
 }
