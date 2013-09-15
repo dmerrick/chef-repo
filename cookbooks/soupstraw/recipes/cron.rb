@@ -12,7 +12,7 @@ RACK_ENV=#{node.chef_environment} #{rake_task}"
 
 cron "take bitcoin stats snapshot" do
   user node[:soupstraw][:deploy_user]
-  minute "*/10" # every 10 minutes
+  minute "*" # every minute
   command cron_command
   only_if { node[:soupstraw] }
   action :create
