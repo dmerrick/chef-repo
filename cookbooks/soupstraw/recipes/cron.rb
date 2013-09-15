@@ -5,6 +5,7 @@
 # Copyright (C) 2013 Soupstraw, Inc.
 #
 
+#FIXME: make this run as the deploy user
 cron "take bitcoin stats snapshot" do
   minute "*/10" # every 10 minutes
   command "cd #{node[:soupstraw][:docroot]} && \
