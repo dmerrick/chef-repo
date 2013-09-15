@@ -33,7 +33,7 @@ end
 
 unicorn_ng_service node[:soupstraw][:docroot] do
   config "#{node[:soupstraw][:shared_dir]}/config/unicorn.rb"
-  bundle '/opt/rbenv/shims/bundle'
+  bundle node[:soupstraw][:bundle_binary]
   environment node.chef_environment
   user deploy_user
 end

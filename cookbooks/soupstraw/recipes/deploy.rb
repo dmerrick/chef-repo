@@ -33,7 +33,18 @@ deploy_revision node[:soupstraw][:deploy_dir] do
   symlinks.clear
 
   action :deploy
-  notifies :restart, "service[unicorn]"
+  notifies :run, "rbenv_execute[run bundle install]", :immediately
+  notifies :reload, "service[unicorn]"
+end
+
+# install the necessary gems
+#TODO: try and see if we can avoid the rbenv_execute resource
+rbenv_execute "run bundle install" do
+  command "#{node[:soupstraw][:bundle_binary]} install --deployment --binstubs"
+  cwd node[:soupstraw][:docroot]
+  ruby_version node[:soupstraw][:ruby_version]
+  user deploy_user
+  action :nothing
 end
 
 # create the following directories:
@@ -83,20 +94,10 @@ link "#{node[:soupstraw][:docroot]}/config/database.yml" do
   to "#{node[:soupstraw][:shared_dir]}/config/database.yml"
   owner deploy_user
   group deploy_user
-end
-
-# install the necessary gems
-#TODO: make idempotent
-#TODO: try and see if we can avoid the rbenv_execute resource
-rbenv_execute "run bundle install" do
-  command "/opt/rbenv/shims/bundle install --deployment --binstubs"
-  cwd node[:soupstraw][:docroot]
-  ruby_version node[:soupstraw][:ruby_version]
-  user deploy_user
+  notifies :run, "rbenv_execute[migrate the database]", :immediately
 end
 
 # run database migrations
-#TODO: make idempotent
 #TODO: try and see if we can avoid the rbenv_execute resource
 rbenv_execute "migrate the database" do
   command "/opt/rbenv/shims/bundle exec rake db:migrate"
@@ -104,4 +105,5 @@ rbenv_execute "migrate the database" do
   cwd node[:soupstraw][:docroot]
   ruby_version node[:soupstraw][:ruby_version]
   user deploy_user
+  action :nothing
 end
