@@ -100,7 +100,7 @@ end
 # run database migrations
 #TODO: try and see if we can avoid the rbenv_execute resource
 rbenv_execute "migrate the database" do
-  command "/opt/rbenv/shims/bundle exec rake db:migrate"
+  command "#{node[:soupstraw][:bundle_binary]} exec rake db:migrate"
   environment "RACK_ENV" => node.chef_environment
   cwd node[:soupstraw][:docroot]
   ruby_version node[:soupstraw][:ruby_version]

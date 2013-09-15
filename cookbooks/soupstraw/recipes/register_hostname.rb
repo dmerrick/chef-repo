@@ -20,7 +20,7 @@ route53_record "create a DNS record for #{node.name}" do
     value node[:ec2][:public_hostname]
     type "CNAME"
   else
-    value node.ipaddress
+    value node[:ipaddress]
     type "A"
   end
 
