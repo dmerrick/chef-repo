@@ -1,0 +1,24 @@
+{
+  "name": "soupstraw_app",
+  "description": "Every node running the Soupstraw app",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "soupstraw": {
+      "ruby_version": "2.0.0-p247",
+      "bundle_binary": "/opt/rbenv/shims/bundle",
+      "deploy_user": "deploy",
+      "repository": "git://github.com/dmerrick/soupstraw.git",
+      "branch": "production",
+      "deploy_dir": "/data/soupstraw",
+      "shared_dir": "/data/soupstraw/shared",
+      "docroot": "/data/soupstraw/current"
+    }
+  },
+  "override_attributes": {},
+  "chef_type": "role",
+  "run_list": [
+    "recipe[soupstraw::deploy]",
+    "recipe[soupstraw::cron]"
+  ],
+  "env_run_lists": {}
+}

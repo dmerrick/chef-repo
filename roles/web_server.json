@@ -3,15 +3,6 @@
   "description": "Web servers get this role.",
   "json_class": "Chef::Role",
   "default_attributes": {
-    "soupstraw": {
-      "ruby_version": "2.0.0-p247",
-      "deploy_user": "deploy",
-      "repository": "git://github.com/dmerrick/soupstraw.git",
-      "branch": "production",
-      "deploy_dir": "/data/soupstraw",
-      "shared_dir": "/data/soupstraw/shared",
-      "docroot": "/data/soupstraw/current"
-    },
     "nginx": {
       "default_site_enabled": false
     }
@@ -19,7 +10,7 @@
   "override_attributes": {},
   "chef_type": "role",
   "run_list": [
-    "recipe[soupstraw::deploy]",
+    "role[soupstraw_app]",
     "recipe[soupstraw::unicorn]",
     "recipe[soupstraw::nginx]"
   ],
