@@ -5,11 +5,15 @@
 # Copyright (C) 2013 Soupstraw, Inc.
 #
 
-#FIXME: make this run as the deploy user
+
+rake_task = "#{node[:soupstraw][:bundle_binary]} exec rake bitcoin:snapshot"
+cron_command = "cd #{node[:soupstraw][:docroot]} && \
+RACK_ENV=#{node.chef_environment} #{rake_task}"
+
 cron "take bitcoin stats snapshot" do
+  user node[:soupstraw][:deploy_user]
   minute "*/10" # every 10 minutes
-  command "cd #{node[:soupstraw][:docroot]} && \
-           RACK_ENV=#{node.chef_environment} bundle exec rake bitcoin:snapshot"
+  command cron_command
   only_if { node[:soupstraw] }
   action :create
 end
