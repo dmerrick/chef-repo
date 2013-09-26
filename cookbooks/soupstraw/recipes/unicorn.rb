@@ -9,7 +9,7 @@ deploy_user = node[:soupstraw][:deploy_user]
 
 unicorn_ng_config "#{node[:soupstraw][:shared_dir]}/config/unicorn.rb" do
   # this can be bumped if we move off t1.micros
-  worker_processes 2 if node.chef_environment == 'production'
+  worker_processes 1 if node.chef_environment == 'production'
   worker_processes 1 if node.chef_environment == 'development'
 
   working_directory node[:soupstraw][:docroot]
@@ -28,8 +28,8 @@ unicorn_ng_config "#{node[:soupstraw][:shared_dir]}/config/unicorn.rb" do
   #TODO: perhaps investigate adding it back later?
   after_fork.clear
 
-  # kill workers after 30 seconds on production
-  timeout (node.chef_environment == 'production' ? 30 : 60)
+  # kill workers after 60 seconds on production
+  timeout (node.chef_environment == 'production' ? 60 : 90)
 end
 
 unicorn_ng_service node[:soupstraw][:docroot] do
