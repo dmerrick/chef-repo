@@ -8,7 +8,8 @@
 deploy_user = node[:soupstraw][:deploy_user]
 
 unicorn_ng_config "#{node[:soupstraw][:shared_dir]}/config/unicorn.rb" do
-  worker_processes 3 if node.chef_environment == 'production'
+  # this can be bumped if we move off t1.micros
+  worker_processes 2 if node.chef_environment == 'production'
   worker_processes 1 if node.chef_environment == 'development'
 
   working_directory node[:soupstraw][:docroot]
