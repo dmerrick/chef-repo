@@ -28,8 +28,8 @@ unicorn_ng_config "#{node[:soupstraw][:shared_dir]}/config/unicorn.rb" do
   #TODO: perhaps investigate adding it back later?
   after_fork.clear
 
-  # kill workers after 60 seconds on production
-  timeout (node.chef_environment == 'production' ? 60 : 90)
+  # kill workers after 30 seconds on production
+  timeout (node.chef_environment == 'production' ? 30 : 60)
 end
 
 unicorn_ng_service node[:soupstraw][:docroot] do
