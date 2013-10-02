@@ -9,6 +9,7 @@
 aws = Chef::DataBagItem.load("aws", "main")
 
 # workaround for an issue in the route53 cookbook
+include_recipe "build-essential"
 package "libxml2-dev"
 package "libxslt1-dev"
 chef_gem "fog"
