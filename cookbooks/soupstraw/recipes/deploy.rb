@@ -44,6 +44,11 @@ template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
   )
 end
 
+#FIXME: this is hacky :(
+bash "stop unicorn" do
+  code "/etc/init.d/unicorn stop || echo"
+end
+
 # pull down new code from git
 deploy_revision node[:soupstraw][:deploy_dir] do
   repo node[:soupstraw][:repository]
@@ -84,4 +89,9 @@ rbenv_execute "migrate the database" do
   ruby_version node[:soupstraw][:ruby_version]
   user deploy_user
   action :nothing
+end
+
+#FIXME: this is hacky :(
+bash "start unicorn" do
+  code "/etc/init.d/unicorn start || echo"
 end

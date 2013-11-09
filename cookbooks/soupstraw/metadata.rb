@@ -5,7 +5,7 @@ license          'All rights reserved'
 description      'Installs/Configures soupstraw'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
-version          '0.2.13'
+version          '0.2.14'
 depends          'motd'
 depends          'rbenv'
 depends          'postgresql'
