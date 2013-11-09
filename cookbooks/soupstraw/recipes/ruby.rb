@@ -7,6 +7,7 @@
 
 include_recipe "rbenv"
 include_recipe "rbenv::ruby_build"
+include_recipe "rbenv::ohai_plugin"
 
 rbenv_ruby node[:soupstraw][:ruby_version] do
   global true

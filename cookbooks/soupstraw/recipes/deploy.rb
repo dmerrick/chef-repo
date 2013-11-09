@@ -11,62 +11,17 @@ include_recipe 'git' #FIXME: is this necessary?
 app_name = node[:soupstraw][:server_name]
 deploy_user = node[:soupstraw][:deploy_user]
 
-# create /data directory if required
-directory node[:soupstraw][:deploy_dir] do
-  owner deploy_user
-  group deploy_user
-  action :create
-  recursive true
-end
-
-# pull down new code from git
-deploy_revision node[:soupstraw][:deploy_dir] do
-  repo node[:soupstraw][:repository]
-  revision node[:soupstraw][:branch]
-  user deploy_user
-  group deploy_user
-
-  # this stuff is pretty rails-specific, so disable it
-  symlink_before_migrate.clear
-  create_dirs_before_symlink.clear
-  purge_before_symlink.clear
-  symlinks.clear
-
-  action :deploy
-  notifies :run, "rbenv_execute[run bundle install]", :immediately
-  notifies :reload, "service[unicorn]"
-end
-
-# install the necessary gems
-#TODO: try and see if we can avoid the rbenv_execute resource
-rbenv_execute "run bundle install" do
-  command "#{node[:soupstraw][:bundle_binary]} install --deployment --binstubs"
-  cwd node[:soupstraw][:docroot]
-  ruby_version node[:soupstraw][:ruby_version]
-  user deploy_user
-  action :nothing
-end
-
 # create the following directories:
 [
-  "#{node[:soupstraw][:shared_dir]}/config",
-  "#{node[:soupstraw][:shared_dir]}/log",
+  node[:soupstraw][:deploy_dir],
   "#{node[:soupstraw][:docroot]}/vendor",
-  "#{node[:soupstraw][:docroot]}/tmp/pids",
-  "#{node[:soupstraw][:docroot]}/tmp/sockets"
+  "#{node[:soupstraw][:shared_dir]}/config"
 ].each do |dir|
   directory dir do
     owner deploy_user
     group deploy_user
     recursive true
   end
-end
-
-# create symlink so logs dir is shared across releases
-link "#{node[:soupstraw][:docroot]}/log" do
-  to "#{node[:soupstraw][:shared_dir]}/log"
-  owner deploy_user
-  group deploy_user
 end
 
 # create database.yml
@@ -89,12 +44,35 @@ template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
   )
 end
 
-# make the shared database.yml accessible to the app
-link "#{node[:soupstraw][:docroot]}/config/database.yml" do
-  to "#{node[:soupstraw][:shared_dir]}/config/database.yml"
-  owner deploy_user
+# pull down new code from git
+deploy_revision node[:soupstraw][:deploy_dir] do
+  repo node[:soupstraw][:repository]
+  revision node[:soupstraw][:branch]
+  user deploy_user
   group deploy_user
+  create_dirs_before_symlink %w{log config tmp/pids tmp/sockets}
+  symlinks "tmp/pids" => "tmp/pids",
+           "log"  => "log"
+  symlink_before_migrate "config/database.yml" => "config/database.yml"
+
+
+  # this stuff is pretty rails-specific, so disable it
+  purge_before_symlink.clear
+
+  action :deploy
+  notifies :run, "rbenv_execute[run bundle install]", :immediately
   notifies :run, "rbenv_execute[migrate the database]", :immediately
+  notifies :reload, "service[unicorn]"
+end
+
+# install the necessary gems
+#TODO: try and see if we can avoid the rbenv_execute resource
+rbenv_execute "run bundle install" do
+  command "#{node[:soupstraw][:bundle_binary]} install --deployment --binstubs"
+  cwd node[:soupstraw][:docroot]
+  ruby_version node[:soupstraw][:ruby_version]
+  user deploy_user
+  action :nothing
 end
 
 # run database migrations

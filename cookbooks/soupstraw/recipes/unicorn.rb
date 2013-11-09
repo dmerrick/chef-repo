@@ -7,6 +7,12 @@
 
 deploy_user = node[:soupstraw][:deploy_user]
 
+directory "#{node[:soupstraw][:shared_dir]}/config" do
+  owner deploy_user
+  group deploy_user
+  recursive true
+end
+
 unicorn_ng_config "#{node[:soupstraw][:shared_dir]}/config/unicorn.rb" do
   # this can be bumped if we move off t1.micros
   worker_processes 1 if node.chef_environment == 'production'
