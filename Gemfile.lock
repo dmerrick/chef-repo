@@ -49,6 +49,12 @@ GEM
       ohai (>= 0.6.0)
       rest-client (>= 1.0.4, < 1.7.0)
       yajl-ruby (~> 1.1)
+    chef-zero (1.7.1)
+      hashie (~> 2.0)
+      json
+      mixlib-log (~> 1.3)
+      moneta (< 0.7.0)
+      rack
     chozo (0.6.1)
       activesupport (>= 3.2.0)
       hashie (>= 2.0.2)
@@ -92,6 +98,9 @@ GEM
     knife-ec2 (0.6.4)
       chef (>= 0.10.10)
       fog (~> 1.6)
+    knife-essentials (1.5.5)
+      chef
+      chef-zero (>= 1.5)
     little-plugger (1.1.3)
     logging (1.6.2)
       little-plugger (>= 1.1.3)
@@ -103,6 +112,7 @@ GEM
     mixlib-config (1.1.2)
     mixlib-log (1.6.0)
     mixlib-shellout (1.2.0)
+    moneta (0.6.0)
     multi_json (1.8.0)
     multipart-post (1.2.0)
     net-http-persistent (2.9)
@@ -192,3 +202,4 @@ DEPENDENCIES
   chef
   foodcritic
   knife-ec2
+  knife-essentials
