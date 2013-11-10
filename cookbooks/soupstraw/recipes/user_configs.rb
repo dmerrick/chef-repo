@@ -33,6 +33,12 @@
 
 end
 
+# add host-specific aliases and environment
+template "/home/dmerrick/.bash_profile.private" do
+  source "bash_profile.private.erb"
+  owner "dmerrick"
+  group "dmerrick"
+end
 
 # dana uses a custom bash prompt
 directory "/home/dmerrick/other_projects" do
