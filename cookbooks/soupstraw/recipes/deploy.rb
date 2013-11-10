@@ -45,6 +45,7 @@ template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
 end
 
 #FIXME: this is hacky :(
+#TODO: change to service resource
 bash "stop unicorn" do
   code "/etc/init.d/unicorn stop || echo"
 end
@@ -92,6 +93,7 @@ rbenv_execute "migrate the database" do
 end
 
 #FIXME: this is hacky :(
+#TODO: change to service resource
 bash "start unicorn" do
   code "/etc/init.d/unicorn start || echo"
 end

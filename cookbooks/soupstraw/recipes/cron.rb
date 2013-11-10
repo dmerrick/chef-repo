@@ -6,7 +6,7 @@
 #
 
 
-rake_task = "#{node[:soupstraw][:bundle_binary]} exec rake bitcoin:snapshot"
+rake_task = "#{node[:soupstraw][:bundle_binary]} exec rake bitcoin:snapshot:all"
 cron_command = "cd #{node[:soupstraw][:docroot]} && \
 RACK_ENV=#{node.chef_environment} #{rake_task}"
 
