@@ -14,6 +14,9 @@ cookbook 'chef-client'
 cookbook 'motd'
 cookbook 'nginx'
 
+#FIXME: hopefully they will fix the issue I was having with this
+cookbook 'rbenv', path: './cookbooks/rbenv'
+
 # only for chef-solo
 group :solo do
   # the opscode version is bugged

@@ -39,6 +39,9 @@
     "nginx": {
       "locked_version": "1.8.0"
     },
+    "rbenv": {
+      "path": "./cookbooks/rbenv"
+    },
     "chef-solo-search": {
       "locked_version": "0.4.0",
       "git": "git://github.com/edelight/chef-solo-search.git",
@@ -59,12 +62,6 @@
     "runit": {
       "locked_version": "1.2.0"
     },
-    "rbenv": {
-      "locked_version": "1.6.5"
-    },
-    "ohai": {
-      "locked_version": "1.1.12"
-    },
     "postgresql": {
       "locked_version": "3.0.4"
     },
@@ -82,6 +79,9 @@
     },
     "cron": {
       "locked_version": "1.2.6"
+    },
+    "ohai": {
+      "locked_version": "1.1.12"
     }
   }
 }
