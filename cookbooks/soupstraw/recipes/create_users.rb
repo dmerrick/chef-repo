@@ -13,3 +13,11 @@ users_manage "deploy" do
   group_id 2301
   only_if { node[:soupstraw] && node[:soupstraw][:deploy_user] }
 end
+
+# give deploy user ability to manage unicorn
+sudo 'unicorn' do
+  user      'deploy'
+  commands  ['/etc/init.d/unicorn']
+  nopasswd  true
+  only_if { node[:soupstraw] && node[:soupstraw][:deploy_user] }
+end
