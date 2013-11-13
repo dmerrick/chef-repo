@@ -24,6 +24,9 @@ unicorn_ng_config "#{node[:soupstraw][:shared_dir]}/config/unicorn.rb" do
   owner deploy_user
   group deploy_user
 
+  # allows unicorn reload to gracefully update workers
+  preload_app false
+
   # listen on UNIX domain socket only
   listen 'unix:tmp/sockets/unicorn.sock'
 
