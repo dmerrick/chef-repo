@@ -44,13 +44,8 @@ template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
   )
 end
 
-#FIXME: this is hacky :(
-#TODO: change to service resource
-bash "stop unicorn" do
-  code "/etc/init.d/unicorn stop || echo"
-end
-
 # pull down new code from git
+# only runs if /data/soupstraw/current does not yet exist
 deploy_revision node[:soupstraw][:deploy_dir] do
   repo node[:soupstraw][:repository]
   revision node[:soupstraw][:branch]
@@ -58,9 +53,8 @@ deploy_revision node[:soupstraw][:deploy_dir] do
   group deploy_user
   create_dirs_before_symlink %w{log config tmp/pids tmp/sockets}
   symlinks "tmp/pids" => "tmp/pids",
-           "log"  => "log"
+           "log"      => "log"
   symlink_before_migrate "config/database.yml" => "config/database.yml"
-
 
   # this stuff is pretty rails-specific, so disable it
   purge_before_symlink.clear
@@ -69,6 +63,9 @@ deploy_revision node[:soupstraw][:deploy_dir] do
   notifies :run, "rbenv_execute[run bundle install]", :immediately
   notifies :run, "rbenv_execute[migrate the database]", :immediately
   notifies :reload, "service[unicorn]"
+
+  # don't run if we already have a deploy
+  not_if { File.exists?(node[:soupstraw][:docroot]) }
 end
 
 # install the necessary gems
@@ -90,10 +87,4 @@ rbenv_execute "migrate the database" do
   ruby_version node[:soupstraw][:ruby_version]
   user deploy_user
   action :nothing
-end
-
-#FIXME: this is hacky :(
-#TODO: change to service resource
-bash "start unicorn" do
-  code "/etc/init.d/unicorn start || echo"
 end
