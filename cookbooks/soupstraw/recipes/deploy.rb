@@ -15,6 +15,8 @@ deploy_user = node[:soupstraw][:deploy_user]
 [
   node[:soupstraw][:deploy_dir],
   "#{node[:soupstraw][:docroot]}/vendor",
+  "#{node[:soupstraw][:shared_dir]}/bundle",
+  "#{node[:soupstraw][:shared_dir]}/bin",
   "#{node[:soupstraw][:shared_dir]}/config"
 ].each do |dir|
   directory dir do
