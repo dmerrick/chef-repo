@@ -12,6 +12,11 @@
       "deploy_dir": "/data/soupstraw",
       "shared_dir": "/data/soupstraw/shared",
       "docroot": "/data/soupstraw/current"
+    },
+    "authorization": {
+      "sudo": {
+        "include_sudoers_d": true
+      }
     }
   },
   "override_attributes": {},

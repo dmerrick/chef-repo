@@ -16,7 +16,7 @@ end
 
 # give deploy user ability to manage unicorn
 sudo 'unicorn' do
-  user      'deploy'
+  group     'deploy'
   commands  ['/etc/init.d/unicorn']
   nopasswd  true
   only_if { node[:soupstraw] && node[:soupstraw][:deploy_user] }
