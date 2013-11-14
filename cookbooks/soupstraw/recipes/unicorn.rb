@@ -49,5 +49,5 @@ unicorn_ng_service node[:soupstraw][:docroot] do
 end
 
 service 'unicorn' do
-  action [ :start, :enable ]
+  action :enable
 end
