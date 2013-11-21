@@ -46,6 +46,14 @@ template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
   )
 end
 
+# create application.yml
+template "#{node[:soupstraw][:shared_dir]}/config/application.yml" do
+  source 'application.yml.erb'
+  owner deploy_user
+  group deploy_user
+  mode 0644
+end
+
 # pull down new code from git
 # only runs if /data/soupstraw/current does not yet exist
 deploy_revision node[:soupstraw][:deploy_dir] do
@@ -56,7 +64,8 @@ deploy_revision node[:soupstraw][:deploy_dir] do
   create_dirs_before_symlink %w{log config tmp/pids tmp/sockets}
   symlinks "tmp/pids" => "tmp/pids",
            "log"      => "log"
-  symlink_before_migrate "config/database.yml" => "config/database.yml"
+  symlink_before_migrate "config/database.yml" => "config/database.yml",
+                         "config/application.yml" => "config/application.yml"
 
   # this stuff is pretty rails-specific, so disable it
   purge_before_symlink.clear
