@@ -52,6 +52,9 @@ template "#{node[:soupstraw][:shared_dir]}/config/application.yml" do
   owner deploy_user
   group deploy_user
   mode 0644
+  variables(
+    :environment => node.chef_environment
+  )
 end
 
 # pull down new code from git
