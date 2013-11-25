@@ -5,3 +5,4 @@ data_bags/encrypted_data_bag_secret
 data_bags/users
 data_bags/aws
 *.un~
+ignore
