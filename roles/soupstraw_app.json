@@ -11,7 +11,8 @@
       "branch": "production",
       "deploy_dir": "/data/soupstraw",
       "shared_dir": "/data/soupstraw/shared",
-      "docroot": "/data/soupstraw/current"
+      "docroot": "/data/soupstraw/current",
+      "default_path": "/bitcoins/1+2"
     },
     "authorization": {
       "sudo": {

@@ -53,7 +53,8 @@ template "#{node[:soupstraw][:shared_dir]}/config/application.yml" do
   group deploy_user
   mode 0644
   variables(
-    :environment => node.chef_environment
+    :environment => node.chef_environment,
+    :default_path => node[:soupstraw][:default_path]
   )
 end
 
