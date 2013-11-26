@@ -8,6 +8,9 @@
 include_recipe 'soupstraw::ruby'
 include_recipe 'git' #FIXME: is this necessary?
 
+# required to install the pg gem
+package 'libpq-dev'
+
 app_name = node[:soupstraw][:server_name]
 deploy_user = node[:soupstraw][:deploy_user]
 
@@ -25,6 +28,11 @@ deploy_user = node[:soupstraw][:deploy_user]
     group deploy_user
     recursive true
   end
+end
+
+bash 'ensure docroot is owned by deploy user' do
+  code "chown #{deploy_user}:#{deploy_user} #{node[:soupstraw][:docroot]}"
+  only_if { File.exists?(node[:soupstraw][:docroot]) }
 end
 
 # create database.yml
