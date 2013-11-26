@@ -6,7 +6,18 @@
       "postgresql": {
         "password": {
           "postgres": "change_me"
-        }
+        },
+        "config": {
+          "listen_addresses": "*"
+        },
+        "pg_hba": [{
+          "comment": "# Allow connections from app2",
+          "type": "host",
+          "db": "postgres",
+          "user": "postgres",
+          "addr": "54.209.96.124/32",
+          "method": "trust"
+        }]
       }
     },
   "override_attributes": {},
