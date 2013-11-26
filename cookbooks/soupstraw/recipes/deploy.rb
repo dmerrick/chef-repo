@@ -51,7 +51,7 @@ template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
     :database    => 'postgres', # "soupstraw_#{node.chef_environment}",
     :username    => 'postgres',
     :password    => node[:postgresql][:password][:postgres],
-    :host        => 'localhost'
+    :host        => 'app1.soupstraw.com' #TODO: make this magic
   )
 end
 
