@@ -14,6 +14,7 @@ deploy_user = node[:soupstraw][:deploy_user]
 # create the following directories:
 [
   node[:soupstraw][:deploy_dir],
+  node[:soupstraw][:shared_dir],
   "#{node[:soupstraw][:docroot]}/vendor",
   "#{node[:soupstraw][:shared_dir]}/bundle",
   "#{node[:soupstraw][:shared_dir]}/bin",
