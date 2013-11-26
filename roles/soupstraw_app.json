@@ -23,8 +23,7 @@
   "override_attributes": {},
   "chef_type": "role",
   "run_list": [
-    "recipe[soupstraw::deploy]",
-    "recipe[soupstraw::cron]"
+    "recipe[soupstraw::deploy]"
   ],
   "env_run_lists": {}
 }
