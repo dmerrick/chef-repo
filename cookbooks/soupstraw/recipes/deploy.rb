@@ -39,7 +39,7 @@ end
 #FIXME: most of this should be in attributes
 #FIXME: figure out how to create soupstraw_ENV database
 #TODO: find postgres-y options to pass
-#TODO: use chef search to set the host value
+postgres_master = search(:node, "role:db_server AND chef_environment:#{node.chef_environment}").first
 template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
   source 'database.yml.erb'
   owner deploy_user
@@ -51,7 +51,7 @@ template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
     :database    => 'postgres', # "soupstraw_#{node.chef_environment}",
     :username    => 'postgres',
     :password    => node[:postgresql][:password][:postgres],
-    :host        => 'app1.soupstraw.com' #TODO: make this magic
+    :host        => postgres_master['fqdn']
   )
 end
 
@@ -86,7 +86,8 @@ deploy_revision node[:soupstraw][:deploy_dir] do
   action :deploy
   notifies :run, "rbenv_execute[run bundle install]", :immediately
   notifies :run, "rbenv_execute[migrate the database]", :immediately
-  notifies :reload, "service[unicorn]"
+  #FIXME: this doesnt work on utility servers since they don't have unicorn
+  #notifies :reload, "service[unicorn]"
 
   # don't run if we already have a deploy
   not_if { File.exists?(node[:soupstraw][:docroot]) }
