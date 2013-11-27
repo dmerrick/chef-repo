@@ -40,6 +40,7 @@ end
 #FIXME: figure out how to create soupstraw_ENV database
 #TODO: find postgres-y options to pass
 #TODO: add encoding: 'utf8'
+#TODO: move me to a config_files recipe
 postgres_master = search(:node, "role:db_server AND chef_environment:#{node.chef_environment}").first
 template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
   source 'database.yml.erb'
@@ -56,15 +57,23 @@ template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
   )
 end
 
+
+# load the home server data bag
+home_server = data_bag_item('servers', 'home')
+
 # create application.yml
+#TODO: move me to a config_files recipe
 template "#{node[:soupstraw][:shared_dir]}/config/application.yml" do
   source 'application.yml.erb'
   owner deploy_user
   group deploy_user
   mode 0644
   variables(
-    :environment => node.chef_environment,
-    :default_path => node[:soupstraw][:default_path]
+    :environment   => node.chef_environment,
+    :default_path  => node[:soupstraw][:default_path],
+    :home_url      => home_server['url'],
+    :home_username => home_server['username'],
+    :home_password => home_server['password']
   )
 end
 
