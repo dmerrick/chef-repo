@@ -39,6 +39,7 @@ end
 #FIXME: most of this should be in attributes
 #FIXME: figure out how to create soupstraw_ENV database
 #TODO: find postgres-y options to pass
+#TODO: add encoding: 'utf8'
 postgres_master = search(:node, "role:db_server AND chef_environment:#{node.chef_environment}").first
 template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
   source 'database.yml.erb'
