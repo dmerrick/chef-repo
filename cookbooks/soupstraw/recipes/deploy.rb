@@ -71,6 +71,7 @@ template "#{node[:soupstraw][:shared_dir]}/config/application.yml" do
   variables(
     :environment   => node.chef_environment,
     :default_path  => node[:soupstraw][:default_path],
+    :cookie_secret => node[:soupstraw][:cookie_secret],
     :home_url      => home_server['url'],
     :home_username => home_server['username'],
     :home_password => home_server['password']
