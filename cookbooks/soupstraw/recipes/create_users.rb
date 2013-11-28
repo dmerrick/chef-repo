@@ -21,3 +21,5 @@ sudo 'unicorn' do
   nopasswd  true
   only_if { node[:soupstraw] && node[:soupstraw][:deploy_user] }
 end
+
+#TODO: add chef-client here
