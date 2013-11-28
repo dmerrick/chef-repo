@@ -71,7 +71,9 @@ template "#{node[:soupstraw][:shared_dir]}/config/application.yml" do
   variables(
     :environment   => node.chef_environment,
     :default_path  => node[:soupstraw][:default_path],
+    :bitcoin_path  => node[:soupstraw][:bitcoin_path],
     :cookie_secret => node[:soupstraw][:cookie_secret],
+    :usd_value_api => node[:soupstraw][:usd_value_api],
     :home_url      => home_server['url'],
     :home_username => home_server['username'],
     :home_password => home_server['password']
