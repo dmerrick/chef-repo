@@ -5,6 +5,8 @@
 # Copyright (C) 2013 Soupstraw, Inc.
 #
 
+#TODO: symlink /var/run/motd.dynamic to /etc/motd here?
+
 # delete these default motd scripts
 default_ubuntu_sections = %w{
   00-header

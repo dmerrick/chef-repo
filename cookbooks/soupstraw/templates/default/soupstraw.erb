@@ -112,7 +112,11 @@ server {
     # http://ariejan.net/2011/10/22/automatically-switch-between-ssl-and-non-ssl-with-nginx-unicorn-rails
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_set_header Host $http_host;
-    proxy_redirect   off;
+    #TODO: investigate/remove these?
+    # these in the original sinatra config I was using
+    #proxy_set_header X-Real-IP  $remote_addr;
+    #proxy_intercept_errors on;
+    proxy_redirect off;
 
     proxy_pass http://unicorn_backend;
   }
