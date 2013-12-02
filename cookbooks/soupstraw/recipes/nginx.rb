@@ -10,6 +10,10 @@ deploy_user = node[:soupstraw][:deploy_user]
 # install nginx
 include_recipe 'nginx'
 
+#TODO:
+# create /etc/nginx/certs
+# add .key and .crt files
+
 template "#{node['nginx']['dir']}/sites-available/soupstraw" do
   owner deploy_user
   group deploy_user
@@ -17,6 +21,7 @@ template "#{node['nginx']['dir']}/sites-available/soupstraw" do
   notifies :reload, 'service[nginx]'
   variables(
     :name => node.name,
+    :shared_dir => node[:soupstraw][:shared_dir],
     :docroot => node[:soupstraw][:docroot]
   )
 end

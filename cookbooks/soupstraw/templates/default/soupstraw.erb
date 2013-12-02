@@ -1,11 +1,22 @@
-upstream unicorn {
+upstream unicorn_backend {
   server unix:<%= @docroot %>/tmp/sockets/unicorn.sock fail_timeout=0;
 }
 
+# redirect to no www
 server {
-  listen 80;
+  server_name www.soupstraw.com;
+  return 301 $scheme://soupstraw.com$request_uri;
+}
+
+server {
+  #listen 80;
+  listen 80 default_server; # ipv4
+  listen [::]:80 default_server ipv6only=on; # listen for ipv6
   server_name <%= @name %>.soupstraw.com;
   root <%= @docroot %>/public;
+  client_max_body_size 3M;
+  charset utf-8;
+
   # set far-future expiration headers on static content
   expires max;
 
@@ -19,11 +30,90 @@ server {
     proxy_set_header X-Forwarded-Proto $scheme;
     proxy_intercept_errors on;
     proxy_redirect off;
-    proxy_pass http://unicorn;
+    proxy_pass http://unicorn_backend;
     expires off;
   }
 
   location / {
     try_files $uri @sinatra;
+    # redirect all traffic to https
+    # keep it secret, keep it safe
+    #return 301 https://$server_name$request_uri;
+  }
+}
+
+# serve all the https!
+server {
+  listen 443 ssl default_server; # SSL
+  listen [::]:443 ssl default_server ipv6only=on; # SSL on ipv6
+
+  # ssl certs
+  #TODO: different location for these?
+  ssl_certificate     /etc/nginx/certs/soupstraw.crt;
+  ssl_certificate_key /etc/nginx/certs/soupstraw.key;
+  ssl_session_cache   shared:SSL:10m;
+
+  # the base baby
+  server_name soupstraw.com;
+  root <%= @docroot %>/public;
+  client_max_body_size 3M;
+  charset utf-8;
+
+  # error docs
+  # error_page 403 /403;
+  # error_page 404 /404;
+  # error_page 500 /500;
+  # error_page 503 /503;
+
+  # get it
+  location = /robots.txt {
+    allow all;
+    log_not_found off;
+    access_log off;
+  }
+
+  # cache.appcache, your document html and data
+  location ~* \.(?:manifest|appcache|html|xml|json)$ {
+    expires -1;
+  }
+
+  # cross domain webfont access
+  location ~* \.(ttf|ttc|otf|eot|woff|font.css)$ {
+    add_header "Access-Control-Allow-Origin" "*";
+  }
+
+  # asset pipeline should get served directly
+  #location ~ ^/(assets)/ {
+  #  add_header Cache-Control public;
+  #  expires    max;
+  #}
+
+  # prevent clients from accessing hidden files (starting with a dot)
+  location ~* (^|/)\. {
+    return 403;
+  }
+
+  # prevent clients from accessing to backup/config/source files
+  location ~* (\.(bak|config|sql|fla|psd|ini|log|sh|inc|swp|dist)|~)$ {
+    return 403;
+  }
+
+  # opt-in to the future
+  add_header "X-UA-Compatible" "IE=Edge,chrome=1";
+
+  # boom
+  location / {
+    try_files $uri @proxy;
+  }
+
+  # pass that shit off
+  location @proxy {
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    # http://ariejan.net/2011/10/22/automatically-switch-between-ssl-and-non-ssl-with-nginx-unicorn-rails
+    proxy_set_header X-Forwarded-Proto $scheme;
+    proxy_set_header Host $http_host;
+    proxy_redirect   off;
+
+    proxy_pass http://unicorn_backend;
   }
 }
