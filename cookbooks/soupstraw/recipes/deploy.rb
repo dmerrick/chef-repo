@@ -41,7 +41,6 @@ end
 #TODO: find postgres-y options to pass
 #TODO: add encoding: 'utf8'
 #TODO: move me to a config_files recipe
-postgres_master = search(:node, "role:db_server AND chef_environment:#{node.chef_environment}").first
 template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
   source 'database.yml.erb'
   owner deploy_user
@@ -51,9 +50,9 @@ template "#{node[:soupstraw][:shared_dir]}/config/database.yml" do
     :environment => node.chef_environment,
     :adapter     => 'postgresql',
     :database    => 'postgres', # "soupstraw_#{node.chef_environment}",
-    :username    => 'postgres',
-    :password    => node[:postgresql][:password][:postgres],
-    :host        => postgres_master['fqdn']
+    :username    => 'soupstraw',
+    :password    => node[:postgresql][:password][:soupstraw],
+    :host        => node[:soupstraw][:db_primary]
   )
 end
 
