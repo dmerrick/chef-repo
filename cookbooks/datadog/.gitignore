@@ -1,0 +1,34 @@
+# bundler
+.bundle
+Gemfile*.lock
+
+# For MacOS:
+.DS_Store
+
+# For Ruby Managers
+.rbenv-version
+.ruby-version
+.ruby-gemset
+.rvmrc
+
+# For TextMate
+*.tmproj
+
+# For emacs:
+*~
+*#
+.#*
+\#*#
+
+# For vim:
+.*.sw[a-z]
+
+# For Vagrant
+.vagrant
+
+# Berkshelf
+Berksfile.lock
+cookbooks/
+/.ruby-version
+.kitchen/
+.kitchen.local.yml

@@ -1,0 +1,14 @@
+instances:
+  <% @instances.each do |instance| -%>
+  - host: <%= instance["host"] %>
+    port: <%= instance["port"] %>
+    timeout: <%= instance["timeout"] %>
+    <% if instance.key?("tags") -%>
+    tags:
+      <% instance["tags"].each do |tag| -%>
+      - <%= tag %>
+      <% end -%>
+    <% end -%>
+  <% end %>
+
+init_config:
