@@ -1,4 +1,4 @@
-site :opscode
+source 'http://api.berkshelf.com'
 
 cookbook 'apt', '>= 2.0.0'
 cookbook 'build-essential'
@@ -13,6 +13,7 @@ cookbook 'hostname'
 cookbook 'chef-client'
 cookbook 'motd'
 cookbook 'nginx'
+cookbook 'datadog'
 
 #FIXME: hopefully they will fix the issue I was having with this
 cookbook 'rbenv', path: './cookbooks/rbenv'
