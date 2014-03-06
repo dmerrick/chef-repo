@@ -9,6 +9,7 @@ deploy_user = node[:soupstraw][:deploy_user]
 
 # install nginx
 include_recipe 'nginx'
+include_recipe 'nginx::http_stub_status_module'
 
 #TODO:
 # create /etc/nginx/certs
