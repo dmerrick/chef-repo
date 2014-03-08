@@ -25,4 +25,6 @@ include_recipe 'datadog::postgres'
 node.default['datadog']['nginx'] = datadog_config['nginx']
 include_recipe 'datadog::nginx'
 
-#TODO: install dogwrap for cron job
+# install python API for the dogwrap command
+include_recipe 'python::pip'
+python_pip 'dogapi'
