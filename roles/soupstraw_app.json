@@ -27,6 +27,17 @@
       "sudo": {
         "include_sudoers_d": true
       }
+    },
+    "newrelic":{
+      "application_monitoring": {
+        "enabled": true,
+        "appname": "Soupstraw"
+      },
+      "ruby-agent": {
+        "install_dir": "/data/soupstraw/shared/config",
+        "app_user": "deploy",
+        "app_group": "deploy"
+      }
     }
   },
   "override_attributes": {},

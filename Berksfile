@@ -14,7 +14,8 @@ cookbook 'chef-client'
 cookbook 'motd'
 cookbook 'nginx'
 cookbook 'datadog', path: './cookbooks/datadog'
-cookbook 'newrelic'
+# only using git because I need version 0.6.0 and it's not in Berkshelf yet
+cookbook 'newrelic', github: 'dmerrick/newrelic', ref: 'master'
 
 #FIXME: hopefully they will fix the issue I was having with this
 cookbook 'rbenv', path: './cookbooks/rbenv'
