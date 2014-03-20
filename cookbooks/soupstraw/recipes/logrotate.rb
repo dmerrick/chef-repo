@@ -16,14 +16,6 @@ logrotate_app 'soupstraw' do
   su        'deploy'
   postrotate 'pid=/data/soupstraw/shared/tmp/pids/unicorn.pid
               test -s $pid && kill -USR1 "$(cat $pid)"'
-  only_if { node[:soupstraw] }
   sharedscripts true
-end
-
-logrotate_app 'chef-client' do
-  path      '/var/log/chef/client.log'
-  options   ['missingok', 'notifempty', 'compress', 'dateext']
-  frequency 'daily'
-  rotate    30
-  create    '644 root root'
+  only_if { node[:soupstraw] }
 end

@@ -2,7 +2,16 @@
   "name": "chef-client",
   "description": "Every chef-client node gets this role.",
   "json_class": "Chef::Role",
-  "default_attributes": {},
+  "default_attributes": {
+    "chef_client": {
+      "interval": 1800,
+      "log_file": "/var/log/chef/chef-client.log",
+      "logrotate": {
+        "rotate": "30",
+        "frequency": "daily"
+      }
+    }
+  },
   "override_attributes": {},
   "chef_type": "role",
   "run_list": [
