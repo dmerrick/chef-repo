@@ -30,8 +30,7 @@
     "recipe[mosh]",
     "recipe[tmux]",
     "recipe[soupstraw::user_configs]",
-    "recipe[soupstraw::logrotate]",
-    "recipe[soupstraw::newrelic]"
+    "recipe[soupstraw::logrotate]"
   ],
   "env_run_lists": {}
 }

@@ -12,7 +12,9 @@
   "run_list": [
     "role[soupstraw_app]",
     "recipe[soupstraw::unicorn]",
-    "recipe[soupstraw::nginx]"
+    "recipe[soupstraw::nginx]",
+    "recipe[soupstraw::newrelic]",
+    "recipe[soupstraw::datadog]"
   ],
   "env_run_lists": {}
 }
