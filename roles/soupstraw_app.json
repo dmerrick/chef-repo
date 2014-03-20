@@ -40,7 +40,14 @@
       }
     }
   },
-  "override_attributes": {},
+  "override_attributes": {
+    "newrelic":{
+      "application_monitoring": {
+        "__comment": "Overriding this because it was using the node name instead",
+        "appname": "Soupstraw"
+      }
+    }
+  },
   "chef_type": "role",
   "run_list": [
     "recipe[soupstraw::deploy]"
