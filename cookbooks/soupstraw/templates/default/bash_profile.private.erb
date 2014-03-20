@@ -1,4 +1,4 @@
 export RACK_ENV="<%= @node.chef_environment %>"
 
 alias app="cd /data/soupstraw/current"
-alias sc="app && bundle exec tux; cd -"
+alias sc="app && NEWRELIC_ENABLE=false bundle exec tux; cd -"

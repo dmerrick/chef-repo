@@ -7,7 +7,7 @@
 
 rake_task = "#{node[:soupstraw][:bundle_binary]} exec rake bitcoin:snapshot:all"
 cron_command = "cd #{node[:soupstraw][:docroot]}"
-cron_command += " && RACK_ENV=#{node.chef_environment} #{rake_task}"
+cron_command += " && RACK_ENV=#{node.chef_environment} NEWRELIC_ENABLE=false #{rake_task}"
 
 cron 'take bitcoin stats snapshot' do
   user node[:soupstraw][:deploy_user]
