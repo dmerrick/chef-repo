@@ -13,9 +13,11 @@ cookbook 'hostname'
 cookbook 'chef-client'
 cookbook 'motd'
 cookbook 'nginx'
-cookbook 'datadog', path: './cookbooks/datadog'
-# only using git because I need version 0.6.0 and it's not in Berkshelf yet
-cookbook 'newrelic', github: 'dmerrick/newrelic', ref: 'master'
+# using git because I need a fix that's in master but not yet released
+# c.p. https://github.com/DataDog/chef-datadog/issues/79
+cookbook 'datadog', github: 'DataDog/chef-datadog'
+# using git because I need version 0.6.0 and it's not in Berkshelf yet
+cookbook 'newrelic', github: 'dmerrick/newrelic'
 
 #FIXME: hopefully they will fix the issue I was having with this
 cookbook 'rbenv', path: './cookbooks/rbenv'
