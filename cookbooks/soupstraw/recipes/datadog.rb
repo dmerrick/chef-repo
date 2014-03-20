@@ -24,7 +24,3 @@ include_recipe 'datadog::postgres'
 # set up nginx integration
 node.default['datadog']['nginx'] = datadog_config['nginx']
 include_recipe 'datadog::nginx'
-
-# install python API for the dogwrap command
-include_recipe 'python::pip'
-python_pip 'dogapi'

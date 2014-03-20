@@ -59,6 +59,8 @@ end
 
 # load the home server data bag
 home_server = data_bag_item('servers', 'home')
+# load the datadog data bag
+datadog_config = data_bag_item('sensitive_configs', 'datadog')
 
 # create application.yml
 #TODO: move me to a config_files recipe
@@ -75,7 +77,8 @@ template "#{node[:soupstraw][:shared_dir]}/config/application.yml" do
     :usd_value_api => node[:soupstraw][:usd_value_api],
     :home_url      => home_server['url'],
     :home_username => home_server['username'],
-    :home_password => home_server['password']
+    :home_password => home_server['password'],
+    :datadog_key   => datadog_config['api_key']
   )
 end
 
