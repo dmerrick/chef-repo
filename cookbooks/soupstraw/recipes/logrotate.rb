@@ -10,7 +10,7 @@ logrotate_app 'soupstraw' do
               /data/soupstraw/shared/log/unicorn.stderr.log
               /data/soupstraw/shared/log/newrelic_agent.log
             }
-  options   ['missingok', 'notifempty', 'compress', 'dateext', 'delaycompress']
+  options   ['missingok', 'notifempty', 'compress', 'dateext']
   frequency 'weekly'
   rotate    52
   su        'deploy'
