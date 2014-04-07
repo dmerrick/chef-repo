@@ -4,10 +4,10 @@ DEPENDENCIES
   chef-client
   chef-solo-search
     git: git://github.com/edelight/chef-solo-search.git
-    revision: 14943e4f1a0b541bb7cf2187f5100df24f97dfc8
+    revision: 4079db540b9b2b00fb383cba8c30f24c2c3bfbb4
   datadog
     git: git://github.com/DataDog/chef-datadog.git
-    revision: 56dffd892a839ba2031543dc9e603b48c93db19c
+    revision: b0a0f4dbe9586e76a0a1141461050f0b049203d6
   git
   hostname
   mosh
@@ -35,9 +35,9 @@ GRAPH
   chef-solo-search (0.5.1)
   chef-vault (1.0.4)
   chef_handler (1.1.5)
-  cron (1.3.0)
+  cron (1.3.2)
   curl (1.1.0)
-  datadog (1.1.1)
+  datadog (1.2.0)
     apt (>= 0.0.0)
     chef_handler (~> 1.1.0)
     yum (>= 0.0.0)
@@ -52,7 +52,7 @@ GRAPH
   hostname (0.1.0)
     hostsfile (>= 0.0.0)
   hostsfile (2.4.4)
-  iis (2.0.4)
+  iis (2.1.0)
     windows (>= 1.2.6)
   logrotate (1.5.0)
   mosh (0.3.0)
@@ -60,9 +60,7 @@ GRAPH
   motd (0.3.1)
   ms_dotnet4 (1.0.2)
     windows (>= 0.0.0)
-  mysql (3.0.4)
-    build-essential (> 1.1.0)
-    openssl (>= 0.0.0)
+  mysql (5.0.6)
   newrelic (0.6.0)
     chef-vault (>= 0.0.0)
     curl (>= 0.0.0)
@@ -109,7 +107,7 @@ GRAPH
     build-essential (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
-  soupstraw (0.2.45)
+  soupstraw (0.2.48)
     datadog (>= 0.0.0)
     git (>= 0.0.0)
     logrotate (>= 0.0.0)
@@ -117,20 +115,19 @@ GRAPH
     newrelic (>= 0.0.0)
     nginx (>= 0.0.0)
     postgresql (>= 0.0.0)
-    python (>= 0.0.0)
     rbenv (>= 0.0.0)
     route53 (>= 0.0.0)
     unicorn-ng (>= 0.0.0)
     users (>= 0.0.0)
   sudo (2.5.0)
   tmux (1.3.2)
-  unicorn-ng (0.2.0)
+  unicorn-ng (0.3.0)
   users (1.7.0)
   vim (1.0.2)
-  windows (1.30.0)
+  windows (1.30.2)
     chef_handler (>= 0.0.0)
-  xml (1.2.2)
+  xml (1.2.4)
     build-essential (>= 0.0.0)
-  yum (3.1.4)
+  yum (3.1.6)
   yum-epel (0.3.4)
     yum (~> 3.0)
