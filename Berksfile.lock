@@ -17,7 +17,6 @@ DEPENDENCIES
     revision: 2663601a04ca06c0fcfd81d71190b196596d519d
   nginx
   rbenv
-    path: ./cookbooks/rbenv
   soupstraw
     path: ./cookbooks/soupstraw
   sudo
@@ -95,11 +94,11 @@ GRAPH
   python (1.4.6)
     build-essential (>= 0.0.0)
     yum-epel (>= 0.0.0)
-  rbenv (0.0.1)
+  rbenv (1.7.1)
     apt (>= 0.0.0)
     build-essential (>= 0.0.0)
     git (>= 0.0.0)
-    ohai (>= 1.1.0)
+    ohai (>= 1.1)
   route53 (0.3.3)
     build-essential (>= 0.0.0)
   rsyslog (1.12.2)

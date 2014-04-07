@@ -18,9 +18,7 @@ cookbook 'nginx'
 cookbook 'datadog', github: 'DataDog/chef-datadog'
 # using git because I need version 0.6.0 and it's not in Berkshelf yet
 cookbook 'newrelic', github: 'dmerrick/newrelic'
-
-#FIXME: hopefully they will fix the issue I was having with this
-cookbook 'rbenv', path: './cookbooks/rbenv'
+cookbook 'rbenv'
 
 # only for chef-solo
 group :solo do
