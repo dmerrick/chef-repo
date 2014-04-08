@@ -19,6 +19,13 @@ cookbook 'datadog', github: 'DataDog/chef-datadog'
 # using git because I need version 0.6.0 and it's not in Berkshelf yet
 cookbook 'newrelic', github: 'dmerrick/newrelic'
 cookbook 'rbenv'
+cookbook 'sysdig'
+
+#TODO: implement these later
+#cookbook 'tmpreaper'
+#cookbook 'fail2ban'
+#cookbook 'omnibus-updater'
+
 
 # only for chef-solo
 group :solo do
