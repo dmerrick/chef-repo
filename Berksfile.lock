@@ -106,7 +106,7 @@ GRAPH
     build-essential (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
-  soupstraw (0.2.48)
+  soupstraw (0.2.49)
     datadog (>= 0.0.0)
     git (>= 0.0.0)
     logrotate (>= 0.0.0)
