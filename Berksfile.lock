@@ -7,7 +7,7 @@ DEPENDENCIES
     revision: 4079db540b9b2b00fb383cba8c30f24c2c3bfbb4
   datadog
     git: git://github.com/DataDog/chef-datadog.git
-    revision: b0a0f4dbe9586e76a0a1141461050f0b049203d6
+    revision: ceefc7f40cb0bfa51ba661e5a887a34562e31e7c
   git
   hostname
   mosh
@@ -18,7 +18,7 @@ DEPENDENCIES
   nginx
   rbenv
   soupstraw
-    path: ./cookbooks/soupstraw
+    path: cookbooks/soupstraw
   sudo
   tmux
   users
@@ -29,26 +29,27 @@ GRAPH
   bluepill (2.3.1)
     rsyslog (>= 0.0.0)
   build-essential (2.0.0)
-  chef-client (3.0.6)
+  chef-client (3.4.0)
     cron (>= 1.2.0)
+    logrotate (>= 1.2.0)
   chef-solo-search (0.5.1)
   chef-vault (1.0.4)
-  chef_handler (1.1.5)
-  cron (1.3.2)
-  curl (1.1.0)
+  chef_handler (1.1.6)
+  cron (1.3.10)
+  curl (2.0.0)
   datadog (1.2.0)
     apt (>= 0.0.0)
     chef_handler (~> 1.1.0)
     yum (>= 0.0.0)
   dmg (2.2.0)
-  git (3.1.0)
+  git (4.0.0)
     build-essential (>= 0.0.0)
     dmg (>= 0.0.0)
     runit (>= 1.0.0)
     windows (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
-  hostname (0.1.0)
+  hostname (0.2.0)
     hostsfile (>= 0.0.0)
   hostsfile (2.4.4)
   iis (2.1.0)
@@ -56,10 +57,11 @@ GRAPH
   logrotate (1.5.0)
   mosh (0.3.0)
     apt (>= 0.0.0)
-  motd (0.3.1)
+  motd (0.4.1)
+    chef_handler (>= 0.0.0)
   ms_dotnet4 (1.0.2)
     windows (>= 0.0.0)
-  mysql (5.0.6)
+  mysql (5.1.12)
   newrelic (0.6.0)
     chef-vault (>= 0.0.0)
     curl (>= 0.0.0)
@@ -67,7 +69,7 @@ GRAPH
     nodejs (>= 0.0.0)
     php (>= 0.0.0)
     python (>= 0.0.0)
-  nginx (2.4.4)
+  nginx (2.6.2)
     apt (~> 2.2)
     bluepill (~> 2.3)
     build-essential (~> 2.0)
@@ -106,7 +108,7 @@ GRAPH
     build-essential (>= 0.0.0)
     yum (~> 3.0)
     yum-epel (>= 0.0.0)
-  soupstraw (0.2.49)
+  soupstraw (0.2.50)
     datadog (>= 0.0.0)
     git (>= 0.0.0)
     logrotate (>= 0.0.0)
@@ -118,15 +120,15 @@ GRAPH
     route53 (>= 0.0.0)
     unicorn-ng (>= 0.0.0)
     users (>= 0.0.0)
-  sudo (2.5.0)
-  tmux (1.3.2)
+  sudo (2.5.2)
+  tmux (1.4.0)
   unicorn-ng (0.3.0)
   users (1.7.0)
-  vim (1.0.2)
+  vim (1.1.2)
   windows (1.30.2)
     chef_handler (>= 0.0.0)
   xml (1.2.4)
     build-essential (>= 0.0.0)
-  yum (3.1.6)
-  yum-epel (0.3.4)
+  yum (3.2.0)
+  yum-epel (0.3.6)
     yum (~> 3.0)
