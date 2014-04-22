@@ -64,6 +64,7 @@ datadog_config = data_bag_item('sensitive_configs', 'datadog')
 
 # create application.yml
 #TODO: move me to a config_files recipe
+#TODO: make unicorn restart when changed
 template "#{node[:soupstraw][:shared_dir]}/config/application.yml" do
   source 'application.yml.erb'
   owner deploy_user
