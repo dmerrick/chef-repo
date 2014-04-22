@@ -12,8 +12,8 @@
       "deploy_dir": "/data/soupstraw",
       "shared_dir": "/data/soupstraw/shared",
       "docroot": "/data/soupstraw/current",
-      "default_path": "/bitcoins/2+1",
-      "bitcoin_path": "/bitcoins/2+3",
+      "default_path": "/home",
+      "bitcoin_path": "/bitcoins/1",
       "cookie_secret": "security is very important",
       "usd_value_api": "http://api.bitcoinaverage.com/no-mtgox/ticker/USD",
       "db_primary": "db1.soupstraw.com"
