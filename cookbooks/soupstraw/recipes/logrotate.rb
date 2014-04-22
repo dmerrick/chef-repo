@@ -13,7 +13,7 @@ logrotate_app 'soupstraw' do
   options   ['missingok', 'notifempty', 'compress', 'dateext']
   frequency 'weekly'
   rotate    52
-  su        'deploy'
+  su        'deploy deploy'
   postrotate 'pid=/data/soupstraw/shared/tmp/pids/unicorn.pid
               test -s $pid && kill -USR1 "$(cat $pid)"'
   sharedscripts true
