@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby   '2.1.1'
+ruby   '2.1.2'
 
 gem 'chef', '~> 11'
 gem 'knife-ec2'
